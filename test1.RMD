@@ -24,8 +24,6 @@ ggplot2::ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
 
 ```
 
-Column {data-width=350}
------------------------------------------------------------------------
 
 ### Chart B
 
@@ -36,11 +34,29 @@ ggplot2::ggplot(data = mtcars, mapping = aes(x = cyl)) +
 
 ```
 
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+
+
 ### Chart C
 
 ```{r}
 ggplot2::ggplot(data = mtcars, mapping = aes(y = hp)) +
   ggplot2::geom_boxplot()
+
+```
+
+Column {data-height=150}
+-----------------------------------------------------------------------
+
+### Chart D
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(y = hp)) +
+  ggplot2::geom_histogram()
+
 
 ```
 
