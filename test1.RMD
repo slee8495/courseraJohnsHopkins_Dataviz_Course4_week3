@@ -1,0 +1,46 @@
+---
+title: "Untitled"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+data(mtcars)
+
+```
+
+Column {data-width=650}
+-----------------------------------------------------------------------
+
+### Chart A
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+  ggplot2::geom_point()
+
+```
+
+Column {data-width=350}
+-----------------------------------------------------------------------
+
+### Chart B
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = cyl)) +
+  ggplot2::geom_bar()
+
+
+```
+
+### Chart C
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(y = hp)) +
+  ggplot2::geom_boxplot()
+
+```
+
