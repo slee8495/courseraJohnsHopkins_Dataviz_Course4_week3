@@ -1,0 +1,53 @@
+---
+title: "Story board Commentary"
+output: 
+  flexdashboard::flex_dashboard:
+  storyboard: true
+---
+  
+  
+### A nice story 0
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+data(mtcars)
+
+```
+
+---
+
+
+This is story 0
+
+
+
+### A nice story 1
+  
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+  ggplot2::geom_point()
+
+```
+
+---
+
+
+This is story number 1 
+
+
+
+### A nice story 2
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = cyl)) +
+  ggplot2::geom_bar()
+
+
+```
+
+
+---
+
+
+This is story nubmer 2

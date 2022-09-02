@@ -1,0 +1,57 @@
+---
+title: "Multiple Pages"
+output: flexdashboard::flex_dashboard
+---
+  
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+data(mtcars)
+
+```
+
+Visualizations {data-icon="fa-signal"}
+=====================================
+  
+### Chart A
+  
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = wt, y = mpg)) +
+  ggplot2::geom_point()
+
+```
+
+
+### Chart B
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(x = cyl)) +
+  ggplot2::geom_bar()
+
+
+```
+
+
+Tables {data-icon="fa-table"}
+=====================================
+  
+  
+  
+### Chart C
+  
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(y = hp)) +
+  ggplot2::geom_boxplot()
+
+```
+
+### Chart D
+
+```{r}
+ggplot2::ggplot(data = mtcars, mapping = aes(y = hp)) +
+  ggplot2::geom_histogram()
+
+
+```
+
+
