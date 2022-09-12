@@ -33,12 +33,13 @@ Column {data-width=1000}
 --------------------------------------------------------------------
 
 ```{r}
-datatable(iris, 
-          extensions = "Buttons",
-          options = list(pageLength = 100, 
-                         scrollY= TRUE,
-                         dom = "Blfrtip",
-                         buttons = c("copy", "csv", "excel", "pdf")))
+
+DT::datatable(iris, 
+              extensions = "Buttons",
+              options = list(pageLength = 100, 
+                             scrollY= TRUE,
+                             dom = "Blfrtip",
+                             buttons = c("copy", "csv", "excel", "pdf")))
 
 
 ```
