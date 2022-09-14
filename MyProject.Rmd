@@ -38,7 +38,9 @@ dat %>%
   group_by(year,Party) %>% 
   summarise(passed=sum(all_pass)) -> a
 
-a
+ggplot2::ggplot(data = a, mapping = aes(x = year, y = passed, fill = Party)) +
+  ggplot2::geom_bar(stat = "identity")
+
 ```
 
 Page 2
