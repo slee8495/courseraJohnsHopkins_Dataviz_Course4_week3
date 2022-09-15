@@ -2,7 +2,7 @@
 title: "Peer Review Three"
 output: 
   flexdashboard::flex_dashboard:
-    orientation: columns
+    orientation: rows
     vertical_layout: fill
 runtime: shiny
 ---
@@ -39,7 +39,11 @@ dat %>%
   summarise(passed=sum(all_pass)) -> a
 
 ggplot2::ggplot(data = a, mapping = aes(x = year, y = passed, fill = Party)) +
-  ggplot2::geom_bar(stat = "identity")
+  ggplot2::geom_area() +
+  ggplot2::scale_fill_manual(values = c("blue", "red")) +
+  ggplot2::labs(x = "Year",
+                y = "All Bills Passed",
+                title = "Number of Bills Passed Since 1980")
 
 ```
 
@@ -52,8 +56,17 @@ Page 2
 
 dat%>%
   drop_na()%>%
-  filter(congress==110) %>%
-  ggplot
+  filter(congress==110) -> b
+
+ggplot2::ggplot(data = b, mapping = aes(x = votepct, y = all_pass, color = Party)) +
+  ggplot2::geom_point() +
+  ggplot2::geom_smooth() +
+  ggplot2::scale_color_manual(values = c("blue", "red")) +
+  ggplot2::labs(title = "Passage and Vote Pct., 110th Congress",
+                x = "Vote Pct.",
+                y = "All Pass") +
+  ggplot2::theme(legend.position = "bottom")
+
 ```
 
 
