@@ -64,8 +64,11 @@ ggplot2::ggplot(data = b, mapping = aes(x = votepct, y = all_pass, color = Party
   ggplot2::scale_color_manual(values = c("blue", "red")) +
   ggplot2::labs(title = "Passage and Vote Pct., 110th Congress",
                 x = "Vote Pct.",
-                y = "All Pass") +
-  ggplot2::theme(legend.position = "bottom")
+                y = "All Pass") -> p_b
+
+
+ggplotly(p_b)
+
 
 ```
 
@@ -76,8 +79,20 @@ ggplot2::ggplot(data = b, mapping = aes(x = votepct, y = all_pass, color = Party
 ```{r}
 dat%>%
   drop_na()%>%
-  filter(congress==110) %>%
-  ggplot()
+  filter(congress==110) -> c
+
+
+ggplot2::ggplot(data = c, mapping = aes(x = dwnom1, y = all_pass, color = Party)) +
+  ggplot2::geom_point() +
+  ggplot2::scale_color_manual(values = c("blue", "red")) +
+  ggplot2::geom_smooth(method = "lm") %>% 
+  ggplot2::labs(title = "Passage and Ideology, 110th Congress",
+                x = "DW Nominate.",
+                y = "All Pass") -> p_c
+
+
+ggplotly(p_c)
+
 ```
 
 
@@ -85,6 +100,8 @@ Page 3
 ======
 
 ### Chart D
+
+
 
 ```{r}
 
@@ -94,6 +111,25 @@ Page 3
 dat %>% 
   group_by(st_name) %>% 
   filter(congress==110) %>%
-  summarise(passed=sum(all_pass))
+  summarise(passed=sum(all_pass)) -> d
+
+```
+
+
+Input{.sidebar}
+----------------------------------------------------------------
+### User Input
+
+```{r}
+selectInput(inputId = "select", label = "Cylinders")
+```
+
+
+```{r}
+ggplot2::ggplot(data = d, mapping = aes(x = passed, y = st_name)) +
+  ggplot2::geom_col() +
+  ggplot2::labs(title = "Total Bills Passed By State Delegations, 110th Congress",
+                x = "Total Bills Passed Per State",
+                y = "State Name")
 
 ```
